@@ -1,7 +1,7 @@
 <template>
   <div class="navbar">
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" v-if="!$vuetify.breakpoint.smAndDown" /> -->
-        <v-app-bar extended :extension-height="extensionHeight" v-if="!$vuetify.breakpoint.smAndDown"
+        <v-app-bar extended :extension-height="extensionHeight" v-show="!$vuetify.breakpoint.smAndDown"
           :clipped-left="clipped" fixed app :flat="flatNav" elevate-on-scroll=""
           style="border-radius:0px 0px 20px 20px; background: #3d6599;">
 
@@ -34,7 +34,7 @@
           </template>
 
         </v-app-bar>
-        <v-app-bar fixed flat tile v-if="$vuetify.breakpoint.smAndDown" elevate-on-scroll=""
+        <v-app-bar fixed flat tile v-show="$vuetify.breakpoint.smAndDown" elevate-on-scroll=""
           style="background: #3d6599;">
           <v-toolbar-title>
             <div class="text-center">

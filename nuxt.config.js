@@ -1,8 +1,8 @@
 import colors from 'vuetify/es5/util/colors'
 import {firebase, db} from './plugins/firebase';
 
-const glob = require('glob')
-const path = require('path')
+// const glob = require('glob')
+// const path = require('path')
 
 // var getDynamicRoutes = function(){
 //   return [].concat(
