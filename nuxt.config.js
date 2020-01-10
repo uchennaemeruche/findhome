@@ -1,6 +1,67 @@
 import colors from 'vuetify/es5/util/colors'
+import {firebase, db} from './plugins/firebase';
+
+const glob = require('glob')
+const path = require('path')
+
+// var getDynamicRoutes = function(){
+//   return [].concat(
+//     glob
+//       .sync('*')
+//   )
+// }
+// var getDynamicRoutes = function() {
+//   return [].concat(
+//     glob
+//       .sync('*.md', { cwd: 'posts/' })
+//       .map((filepath) => `/software/${path.basename(filepath, '.md')}`),
+//     glob
+//       .sync('*.md', { cwd: 'blog/' })
+//       .map((filepath) => `/blog/${path.basename(filepath, '.md')}`)
+//   )
+// }
+
+
+// let dynamicRoutes = () => {
+//   return axios.get('https://your-api-here/products').then(res => {
+//     return res.data.map(product => `/product/${product.id}`)
+//   })
+// }
+
+// let dynamicRoutes = () => {
+//   return new Promise(resolve => {
+//     resolve(data.map(el => `product/${el.id}`))
+//   })
+// }
+
+// pages/property/:id
+let dynamicPropertyRoute = () =>{
+  return db.collection('property-listing').get().then((snapshot) =>{
+    snapshot.forEach((res) =>{
+      return res.map((property) =>{
+        return '/property/' + property.id
+      })
+    })
+  })
+}
+// pages/property/details/:id
+let dynamicDetailsRoute = () =>{
+  return db.collection('property-listing').get().then((snapshot) =>{
+    snapshot.forEach((res) =>{
+      return res.map((property) =>{
+        return '/property/details/' + property.id
+      })
+    })
+  })
+}
 
 export default {
+  generate: {
+    routes:[
+      dynamicDetailsRoute,
+      dynamicPropertyRoute
+    ]
+  },
   mode: 'universal',
   /*
   ** Headers of the page

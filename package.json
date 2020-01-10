@@ -15,9 +15,11 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "cookieparser": "^0.1.0",
     "firebase": "^7.4.0",
+    "glob": "^7.1.6",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
     "nuxt": "^2.0.0",
+    "path": "^0.12.7",
     "vue-light-gallery": "^1.0.1"
   },
   "devDependencies": {
