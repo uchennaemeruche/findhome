@@ -1,11 +1,11 @@
 <template>
   <v-app light>
     <Navigation v-show="$route.matched[0].path != '/dashboard' "/>
-    <v-content>
+    <v-main>
       <v-container fluid>
         <nuxt />
       </v-container>
-    </v-content>
+    </v-main>
     <Footer v-show="($route.matched[0].path != '/account') " />
   </v-app>
 </template>

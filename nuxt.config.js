@@ -105,6 +105,7 @@ export default {
    ** Plugins to load before mounting the App
    */
   plugins: [
+    '~/plugins/priceFilter.js',
     '~/plugins/eventBus.js',
     '~/plugins/lightGallery.client.js',
     '~/plugins/firebase.js',
@@ -170,6 +171,5 @@ export default {
   server: {
     port: 3000, // default: 3000
     host: 'localhost' // default: localhost
-
   }
 }

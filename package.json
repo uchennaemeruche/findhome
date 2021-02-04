@@ -11,18 +11,18 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.3.6",
-    "@nuxtjs/pwa": "^3.0.0-0",
+    "@nuxtjs/axios": "^5.12.3",
+    "@nuxtjs/pwa": "^3.3.2",
     "cookieparser": "^0.1.0",
-    "firebase": "^7.4.0",
+    "firebase": "^7.24.0",
     "glob": "^7.1.6",
     "js-cookie": "^2.2.1",
     "jwt-decode": "^2.2.0",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.14.11",
     "path": "^0.12.7",
     "vue-light-gallery": "^1.0.1"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.0.0"
+    "@nuxtjs/vuetify": "^1.11.2"
   }
 }

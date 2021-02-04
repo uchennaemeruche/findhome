@@ -7,9 +7,6 @@
           </v-btn>
           <v-toolbar-title>Close</v-toolbar-title>
           <v-spacer></v-spacer>
-          <!-- <v-toolbar-items>
-            <v-btn dark text @click="dialog = false">Save</v-btn>
-          </v-toolbar-items> -->
         </v-toolbar>
 
 
@@ -165,14 +162,17 @@ export default {
             frontViewImage:[],
             rearViewImage:[],
             otherViewImages:[],
+            newImg:"Hello",
             update:{
               frontViewImage:'',
               rearViewImage:'',
-              otherViewImages:[],
+              
               defaultFrontView:'',
               defaultRearView:'',
               defaultOtherViews:[],
               docID: null,
+              newImg:[],
+              otherViews:[],
             },
             form:{
               title: '',
@@ -227,7 +227,7 @@ export default {
         })
       },
       editListing(data){
-        console.log('Data to load', data)
+        console.log('Data to load', data.title);
         this.form.title = data.title
         this.form.category = data.category
         this.form.type = data.type
@@ -237,7 +237,7 @@ export default {
         this.form.price = data.price
         this.update.frontViewImage = data.frontViewImage;
         this.update.rearViewImage = data.rearViewImage;
-        this.update.otherViewImages = data.otherViewsImage;
+        this.update.otherViews = data.otherViewsImage;
         this.update.defaultFrontView = data.frontViewImage;
         this.update.defaultRearView = data.rearViewImage;
         this.update.defaultOtherViews = data.otherViewsImage;
@@ -348,6 +348,7 @@ export default {
         }
       },
       setOtherImages(e){
+        let vm = this;
         console.log("Files selected: ", e.length)
         var rearViewSelector = document.getElementById('otherImages');
         if(rearViewSelector.value.length == 0){
@@ -363,11 +364,17 @@ export default {
               return;
             };
             this.otherViewImages.forEach(img =>{
+              console.log("Image: ", img);
+
+              console.log("VM update 1: ", vm.update.otherViewImages);
+
               let reader = new FileReader()
               // console.log("Images: ", img)
-              reader.readAsDataURL(img)
+              reader.readAsDataURL(img);
               reader.addEventListener('load', () =>{
-                this.update.otherViewImages.push(reader.result);
+                console.log("VM update: ", vm.update.otherViews);
+                console.log("New  update: ", vm.update.newImg);
+                vm.update.otherViews.push(reader.result);
                 // console.log("Loaded Result: ")
               })
             })

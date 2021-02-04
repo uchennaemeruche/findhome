@@ -6,7 +6,7 @@
       height="400"
       type="table"
     >
-      <v-container>
+      <v-container  style="margin:auto 50px;">
         <v-row>
           <!-- <p>New Deals</p> -->
         </v-row>
@@ -15,15 +15,13 @@
             v-for="item in propertyListings"
             :key="item.id"
             cols="12"
-            xs="6"
-            sm="6"
-            md="4"
-            lg="4"
-            smAndDown="6"
+            md="3"
+            
           >
-            <v-hover v-slot:default="{ hover }">
+          <property-card :property="item" />
+            <!-- <v-hover v-slot:default="{ hover }">
               <v-card width="500" :elevation="hover ? 12 : 0" :class="{ 'on-hover': hover }">
-                <!-- <nuxt-link :to="`/property/details/${item.id}`"> -->
+               
                 <nuxt-link :to="`/property/details/${item.id}`">
                   <v-img
                     :src="item.frontViewImage"
@@ -61,7 +59,7 @@
                   <contact-details :item="item" />
                 </v-card-actions>
               </v-card>
-            </v-hover>
+            </v-hover> -->
           </v-col>
         </v-row>
       </v-container>
@@ -71,13 +69,16 @@
 
 <script>
 import ContactDetails from "@/components/ContactDetails";
+import PropertyCard from './PropertyCard.vue';
 export default {
   name: "latest",
   components: {
-    "contact-details": ContactDetails
+    "contact-details": ContactDetails,
+    "property-card": PropertyCard,
   },
   data() {
-    return {
+  
+      return {
       loading: false,
       transition: "scale-transition",
       phone: "07067194827",
@@ -88,26 +89,39 @@ export default {
         {
           title: "Pre-fab homes",
           slug: "pre-fab-homes",
-          src: "https://cdn.vuetifyjs.com/images/cards/house.jpg",
+          frontViewImage: require("../assets/images/1.jpg"),
           flex: 4,
           price: "20000",
-          type: "rent"
+
+          type: "rent",
+          id:1
         },
         {
           title: "Favorite road trips",
           slug: "favorite-road-trips",
-          src: "https://cdn.vuetifyjs.com/images/cards/road.jpg",
+          frontViewImage: require("../assets/images/2.jpg"),
           flex: 4,
           price: "340000",
-          type: "sale"
+          type: "sale",
+          id:2,
         },
         {
           title: "Best airlines",
           slug: "best-airlines",
-          src: "https://cdn.vuetifyjs.com/images/cards/plane.jpg",
+          frontViewImage: require("../assets/images/3.webp"),
           flex: 4,
           price: "50000",
-          type: "rent"
+          type: "rent",
+          id:3,
+        },
+        {
+          title: "Best airlines",
+          slug: "best-airlines",
+          frontViewImage: require("../assets/images/3.webp"),
+          flex: 4,
+          price: "50000",
+          type: "rent",
+          id:4,
         }
       ]
     };
@@ -134,10 +148,6 @@ export default {
   transition: opacity 0.4s ease-in-out;
   border-radius: 20px 0px 20px 0px !important;
 }
-
-/* #latest-deals .v-card:not(.on-hover) {
-  opacity: 0.6;
- } */
 
 #latest-deals .show-btns {
   color: rgba(255, 255, 255, 1) !important;

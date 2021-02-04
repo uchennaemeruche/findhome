@@ -8,31 +8,31 @@
       :clipped-left="clipped"
       fixed
       app
-      :flat="flatNav"
-      elevate-on-scroll
-      style="border-radius:0px 0px 20px 20px; background: #3d6599;"
+      flat
+      elevate-on-scroll 
+      style="background: #3d6599;"
     >
-      <v-toolbar-title>
-        <div class="text-center">
-          <nuxt-link to="/">
-            <vuetify-logo />
-          </nuxt-link>
-        </div>
-      </v-toolbar-title>
+     
+        
+    <nuxt-link to="/">
+      <span style="text-decoration:none"><img :src="require('../assets/images/logo4.PNG')" alt="" style=" "></span>
+    </nuxt-link>
+        
+      
 
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
         <v-btn text to="/property/4SbY4LaEW829Lr0umD8X">Buy</v-btn>
         <v-btn text to="/property/aBtCR6UtAVEjDTStlgGM">Rent</v-btn>
-        <v-btn text to="/account/login">Sell/List Property</v-btn>
-        <v-btn text to="/account/login">Login</v-btn>
+        <v-btn text to="/account/login" >Sell/List Property</v-btn>
+        <v-btn text to="/account/login" v-show="JSON.stringify($store.state.account.user) == '{}'">Login</v-btn>
         <v-btn
           text
           to="/dashboard"
           v-show="JSON.stringify($store.state.account.user) !== '{}'"
         >My Dashboard</v-btn>
-        <v-btn text to="/account/signup">Signup</v-btn>
+        <v-btn text to="/account/signup" v-show="JSON.stringify($store.state.account.user) == '{}'">Signup</v-btn>
       </v-toolbar-items>
       <template v-slot:extension v-if="showSearchBox">
         <v-tabs background-color="transparent">
@@ -144,7 +144,7 @@ export default {
     //   this.$bus.$emit('showSearchBox', true)
     // },
     handleScroll() {
-      if (window.scrollY > 190) {
+      if (window.scrollY > 250) {
         if (this.$route.name !== "property-search") {
           this.extensionHeight = 70;
           // this.$bus.$emit("handleScroll", false);
@@ -181,6 +181,16 @@ export default {
 .v-toolbar__items {
   display: block;
 }
+
+a.nuxt-link-exact-active.nuxt-link-active{
+  text-decoration: none;
+  color:#fff;
+  font-family: 'Tahoma';
+  /* margin-top:10px; */
+  
+}
+
+
 .navbar .v-toolbar__items .v-btn {
   color: #fff !important;
 }
