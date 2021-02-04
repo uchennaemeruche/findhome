@@ -9,30 +9,37 @@
       fixed
       app
       flat
-      elevate-on-scroll 
+      elevate-on-scroll
       style="background: #3d6599;"
     >
-     
-        
-    <nuxt-link to="/">
-      <span style="text-decoration:none"><img :src="require('../assets/images/logo4.PNG')" alt="" style=" "></span>
-    </nuxt-link>
-        
-      
+      <nuxt-link to="/">
+        <span style="text-decoration:none">
+          <img :src="require('../assets/images/logo4.PNG')" alt style=" " />
+        </span>
+      </nuxt-link>
 
+      <!-- {{process.env.apiKey}} -->
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
         <v-btn text to="/property/4SbY4LaEW829Lr0umD8X">Buy</v-btn>
         <v-btn text to="/property/aBtCR6UtAVEjDTStlgGM">Rent</v-btn>
-        <v-btn text to="/account/login" >Sell/List Property</v-btn>
-        <v-btn text to="/account/login" v-show="JSON.stringify($store.state.account.user) == '{}'">Login</v-btn>
+        <v-btn text to="/account/login">Sell/List Property</v-btn>
+        <v-btn
+          text
+          to="/account/login"
+          v-show="JSON.stringify($store.state.account.user) == '{}'"
+        >Login</v-btn>
         <v-btn
           text
           to="/dashboard"
           v-show="JSON.stringify($store.state.account.user) !== '{}'"
         >My Dashboard</v-btn>
-        <v-btn text to="/account/signup" v-show="JSON.stringify($store.state.account.user) == '{}'">Signup</v-btn>
+        <v-btn
+          text
+          to="/account/signup"
+          v-show="JSON.stringify($store.state.account.user) == '{}'"
+        >Signup</v-btn>
       </v-toolbar-items>
       <template v-slot:extension v-if="showSearchBox">
         <v-tabs background-color="transparent">
@@ -99,7 +106,7 @@ import firebase from "firebase";
 export default {
   components: {
     VuetifyLogo,
-    "search-box": SearchBox
+    "search-box": SearchBox,
   },
   data() {
     return {
@@ -114,29 +121,29 @@ export default {
         {
           icon: "mdi-apps",
           title: "Buy",
-          to: "/property/4SbY4LaEW829Lr0umD8X"
+          to: "/property/4SbY4LaEW829Lr0umD8X",
         },
         {
           icon: "mdi-chart-bubble",
           title: "Rent",
-          to: "/property/aBtCR6UtAVEjDTStlgGM"
+          to: "/property/aBtCR6UtAVEjDTStlgGM",
         },
         {
           icon: "mdi-chart-bubble",
           title: "Sell/List Property",
-          to: "/account/login"
+          to: "/account/login",
         },
         {
           icon: "mdi-chart-bubble",
           title: "Signup",
-          to: "/account/signup"
+          to: "/account/signup",
         },
         {
           icon: "mdi-chart-bubble",
           title: "Login",
-          to: "/account/login"
-        }
-      ]
+          to: "/account/login",
+        },
+      ],
     };
   },
   methods: {
@@ -153,7 +160,7 @@ export default {
         this.extensionHeight = 0;
         this.$bus.$emit("handleScroll", true);
       }
-    }
+    },
   },
   created() {
     if (process.browser) {
@@ -165,7 +172,7 @@ export default {
     if (process.browser) {
       window.removeEventListener("scroll", this.handleScroll);
     }
-  }
+  },
 };
 </script>
 
@@ -182,14 +189,12 @@ export default {
   display: block;
 }
 
-a.nuxt-link-exact-active.nuxt-link-active{
+a.nuxt-link-exact-active.nuxt-link-active {
   text-decoration: none;
-  color:#fff;
-  font-family: 'Tahoma';
+  color: #fff;
+  font-family: "Tahoma";
   /* margin-top:10px; */
-  
 }
-
 
 .navbar .v-toolbar__items .v-btn {
   color: #fff !important;
